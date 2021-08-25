@@ -21,7 +21,7 @@ def printtitle(url):
     context = makecontext(url)
     titles = context.find_all("div", class_="title")
     for title in titles:
-        if (title.a != None) and (title.a.string.find('通識') != -1):
+        if (title.a != None) and (title.a.string.find('通識') == -1):
             #url = "https://www.ptt.cc" + title.a['href']
             #printcontext(url)
             print(title.a.string)
@@ -30,7 +30,7 @@ def printtitle(url):
 def prevpage(url):
     context = makecontext(url)
     temp = context.find("a", string="‹ 上頁")
-    if (temp.find('"btn wide"') != -1):
+    if (temp.find('btn wide disabled') == -1):
         return "https://www.ptt.cc" + temp["href"]
     else:
         return 0
@@ -43,9 +43,11 @@ def makecontext(url):
     return context
 
 if __name__ == '__main__':
-    #what = input('輸入你想搜尋的教授或課程名稱。')
-    #url = "https://www.ptt.cc/bbs/NTUcourse/search?q=" + what
-    url = "https://www.ptt.cc/bbs/NTUcourse/index.html"
+    what = input('輸入你想搜尋的教授或課程名稱。')
+    url = "https://www.ptt.cc/bbs/NTUcourse/search?q=" + urllib.quote(what)
+    #url = "https://www.ptt.cc/bbs/NTUcourse/index.html"
+    #url = "https://www.ptt.cc/bbs/NTUcourse/search?q=%E5%91%82%E5%AD%B8%E4%B8%80"
+    #url = "https://www.ptt.cc/bbs/NTUcourse/search?q=%E6%9E%97%E8%BB%92%E7%94%B0"
     for i in range (3):
         printtitle(url)
         url = prevpage(url)
