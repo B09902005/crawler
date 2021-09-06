@@ -1,0 +1,1874 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <!-- Bootstrap core CSS -->
+    <link href='https://if192.aca.ntu.edu.tw/rtcourse/assets/bootstrap-4.3.1.min.css' rel='stylesheet' />
+    <link rel='stylesheet' href='https://if192.aca.ntu.edu.tw/rtcourse/assets/CouSel.css' type='text/css' />
+    <title>電腦選課系統</title>
+    <script src='https://if192.aca.ntu.edu.tw/rtcourse/assets/jquery-3.3.1.min.js' type="text/javascript"></script>
+<script type="text/javascript">
+// 在 IE8 以前的版本，會有 'console' is undefined 的錯誤。
+if (typeof console === "undefined") {
+    this.console = {log: function() {}};
+}
+window.lang = 'C';
+
+window.c_app = {};
+</script>
+    <style>
+        .flash_msg {
+            padding: 5px;
+            margin: 5px 0px 5px 0px;
+            /*width: auto;*/
+            color: red;
+            font-size: 16px;
+            font-weight:bold;
+            border:1px solid #c98c21;
+            background-color: #efdda8;
+        }
+    </style>
+</head>
+<body>
+<!-- 10.161.86.190 --><style>
+    #div-main {
+        padding-top: 10px;
+    }
+</style>
+
+<style>
+.navbar-brand {
+    /*width: 190px;*/
+    font-size: 24px;
+}
+
+.navbar-brand img {
+    height: 60px;
+    /* put value of image height as your need */
+    float: right;
+    /*margin-right: 7px;*/
+}
+</style>
+<nav class="navbar navbar-expand-md fixed-top navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand navbar-right" href="#">
+            <img id='logo-image' src='https://if192.aca.ntu.edu.tw/rtcourse/assets/ntu-sel-logo.png' alt="" />
+        </a>
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav ml-auto">
+<!--            <ul class="navbar-nav ml-auto">-->
+                <li class='nav-item active'><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-main">首頁</a></li>
+                <li class='nav-item '><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-runo2-new#"><span>匯入預選課程</span></a></li>
+                <li class='nav-item '><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-func-oth"><span>登記選課</span></a></li>
+                <li class='nav-item '><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/del-oth-form"><span>退選</span></a></li>
+                <li class='nav-item '><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-timetable-new"><span>上課時間表</span></a></li>
+                        <li class='nav-item '><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-log"><span>操作紀錄</span></a></li>
+                            <li class='nav-item '><a class='nav-link' href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/the-end-new"><span>登出</span></a></li>
+
+                            </ul>
+        </div>
+</div>
+
+</nav>
+
+
+    <div class="container" id="div-main">
+[<a href='https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-main?language=E'>English</a>]&nbsp;B09902005&nbsp;盧冠綸                                            &lt;<a href='https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/stu-info'>更多資訊</a>&gt;&nbsp;&nbsp;(Login at 21:09)<!-- Wrap -->
+<div id="wrap">
+<!--Content Wrap -->
+<div id="content-wrap">
+    <div id="main">
+      <div id="main-sub-menu" class="sub-menu">
+          已登記課程列表 » <a href='?cou=O' class='cur-act'>其他科目</a>
+          <a class='' href='?cou=1'>國文</a>
+                <a class='' href='?cou=2'>英外文</a>
+          <a class='' href='?cou=5'>微積分</a>
+              </div>
+<br>
+    <center>
+<style>
+.flash_msg {
+  padding: 5px;
+  margin: 5px 0px 5px 0px;
+  /*width: auto;*/
+  color: red;
+  font-size: 16px;
+  font-weight:bold; 
+  border:1px solid #c98c21;
+  background-color: #efdda8; 
+}
+</style>
+<h4>已登記之其他科目如下表</h4>    <font color=red size=3>
+        <b>說明： <span style='color: black;'> 黑色字體：已確定選上的課</span>　　<span style='color: blue;'>藍色字體：已登記，需等分發後才確定是否選上</span></b>
+    </font>
+        </center>
+    <table class="tb-sel-lis" width='90%' class='footable' cellspacing='0' cellpadding='4' align='Center' rules='rows'>
+        <tr class="tr-sel-lis-header">
+            <th class='d-none d-sm-table-cell' scope='col' >必帶</th>
+            <th class='d-none d-sm-table-cell' scope='col' >流水號</th>
+            <th>課程名稱</th> 
+            <th>教師姓名</th>
+            <th>課&nbsp;號<br>課程識別碼</th>
+            <th>班次</th>
+      <!--  <th>< ?        echo $table_head[9];? ></th>-->
+            <th>學分</th>
+            <th>上課時間</th>  
+            <th class='d-none d-sm-table-cell' scope='col' >限制<BR>人數</th>
+            <th class='d-none d-sm-table-cell' scope='col' >必帶<BR>人數</th>
+            <th class='d-none d-sm-table-cell' scope='col' >登記<BR>人數</th>
+            <th class='d-none d-sm-table-cell' scope='col' >先修<br>課程</th>
+            <th>志願序</th>             
+        </tr>   
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">* 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">38093 　</td>
+
+        <td align=left><font color="black">服務學習甲                                        　</td>
+        <td align=left><font color="black">                    　</td>
+
+        <td align=left><font color="black">CSIE1911<br>902 001A0 　</td>
+        <td align=center><font color="black">05 　</td>
+        <td align=center><font color="black">0 　</td>
+        <td align=left><font color="black"> 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">35 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">13 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">* 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">48884 　</td>
+
+        <td align=left><font color="black">系統程式設計                                      　</td>
+        <td align=left><font color="black">鄭卜壬              　</td>
+
+        <td align=left><font color="black">CSIE2210<br>902 25900 　</td>
+        <td align=center><font color="black">   　</td>
+        <td align=center><font color="black">3 　</td>
+        <td align=left><font color="black">三2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">160 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">148 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">73 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">* 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">71771 　</td>
+
+        <td align=left><font color="black">線性代數                                          　</td>
+        <td align=left><font color="black">陳文進              　</td>
+
+        <td align=left><font color="black">CSIE2120<br>902 25040 　</td>
+        <td align=center><font color="black">01 　</td>
+        <td align=center><font color="black">3 　</td>
+        <td align=left><font color="black">二7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">80 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">60 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">11 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">* 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">82744 　</td>
+
+        <td align=left><font color="black">演算法設計與分析                                  　</td>
+        <td align=left><font color="black">蕭旭君              　</td>
+
+        <td align=left><font color="black">CSIE2136<br>902 25800 　</td>
+        <td align=center><font color="black">01 　</td>
+        <td align=center><font color="black">3 　</td>
+        <td align=left><font color="black">四7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">94 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">71 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="black">24 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">38543 　</td>
+
+        <td align=left><font color="blue">前瞻資訊科技一                                    　</td>
+        <td align=left><font color="blue">陳縕儂              　</td>
+
+        <td align=left><font color="blue">CSIE3015<br>902 39800 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">96 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">143 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">1<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=38543&source=rt1-main&fun=a&rank=1"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">45875 　</td>
+
+        <td align=left><font color="blue">機器學習                                          　</td>
+        <td align=left><font color="blue">林軒田              　</td>
+
+        <td align=left><font color="blue">CSIE5043<br>922 U0960 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">四2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">160 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">605 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">2<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=45875&source=rt1-main&fun=a&rank=2"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">83034 　</td>
+
+        <td align=left><font color="blue">個體經濟學上                                      　</td>
+        <td align=left><font color="blue">駱明慶              　</td>
+
+        <td align=left><font color="blue">ECON2018<br>303 20011 　</td>
+        <td align=center><font color="blue">04 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五3,4,5 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">45 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">148 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">3<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=83034&source=rt1-main&fun=a&rank=3"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">26700 　</td>
+
+        <td align=left><font color="blue">個體經濟學上                                      　</td>
+        <td align=left><font color="blue">蔡崇聖              　</td>
+
+        <td align=left><font color="blue">ECON2018<br>303 20011 　</td>
+        <td align=center><font color="blue">03 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">75 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">324 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">4<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=26700&source=rt1-main&fun=a&rank=4"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">31746 　</td>
+
+        <td align=left><font color="blue">個體經濟學上                                      　</td>
+        <td align=left><font color="blue">古慧雯              　</td>
+
+        <td align=left><font color="blue">ECON2018<br>303 20011 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">80 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">241 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">5<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=31746&source=rt1-main&fun=a&rank=5"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">74030 　</td>
+
+        <td align=left><font color="blue">機器學習                                          　</td>
+        <td align=left><font color="blue">吳沛遠              　</td>
+
+        <td align=left><font color="blue">EE5184<br>921 U2620 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">4 　</td>
+        <td align=left><font color="blue">五2,3,4,5 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">60 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">278 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">6<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=74030&source=rt1-main&fun=a&rank=6"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">46496 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">何文澤              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">06 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">350 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1917 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">7<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=46496&source=rt1-main&fun=a&rank=7"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">87521 　</td>
+
+        <td align=left><font color="blue">賽局論                                            　</td>
+        <td align=left><font color="blue">古慧雯              　</td>
+
+        <td align=left><font color="blue">ECON4031<br>303 46500 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">五3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">25 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">184 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">8<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=87521&source=rt1-main&fun=a&rank=8"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40922 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">黃從仁              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">500 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1362 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">9<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=40922&source=rt1-main&fun=a&rank=9"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">41092 　</td>
+
+        <td align=left><font color="blue">數位電子與數位電路                                　</td>
+        <td align=left><font color="blue">賴飛羆              　</td>
+
+        <td align=left><font color="blue">CSIE2350<br>902 21410 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一7,8 三7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">50 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">78 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">10<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=41092&source=rt1-main&fun=a&rank=10"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">51013 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">趙儀珊              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">07 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">三8,9,10 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">150 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">682 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">11<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=51013&source=rt1-main&fun=a&rank=11"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">82004 　</td>
+
+        <td align=left><font color="blue">個體經濟學上                                      　</td>
+        <td align=left><font color="blue">黃貞穎              　</td>
+
+        <td align=left><font color="blue">ECON2018<br>303 20011 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">80 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">257 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">12<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=82004&source=rt1-main&fun=a&rank=12"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">14935 　</td>
+
+        <td align=left><font color="blue">金融科技導論                                      　</td>
+        <td align=left><font color="blue">廖世偉              　</td>
+
+        <td align=left><font color="blue">CSIE5434<br>922 U4410 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五A,B,C 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">104 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">225 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">15<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=14935&source=rt1-main&fun=a&rank=15"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">80086 　</td>
+
+        <td align=left><font color="blue">音樂、演化與大腦                                  　</td>
+        <td align=left><font color="blue">蔡振家              　</td>
+
+        <td align=left><font color="blue">Music5065<br>144 U0930 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">78 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1532 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">16<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=80086&source=rt1-main&fun=a&rank=16"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">20932 　</td>
+
+        <td align=left><font color="blue">賽局論                                            　</td>
+        <td align=left><font color="blue">黃景沂              　</td>
+
+        <td align=left><font color="blue">ECON4031<br>303 46500 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">一3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">68 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">142 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">18<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=20932&source=rt1-main&fun=a&rank=18"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">31682 　</td>
+
+        <td align=left><font color="blue">應用賽局理論                                      　</td>
+        <td align=left><font color="blue">陳暐                　</td>
+
+        <td align=left><font color="blue">AGEC7147<br>627 M0200 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">103 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">19<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=31682&source=rt1-main&fun=a&rank=19"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">54166 　</td>
+
+        <td align=left><font color="blue">金融科技導論                                      　</td>
+        <td align=left><font color="blue">張智星              　</td>
+
+        <td align=left><font color="blue">CSIE5434<br>922 U4410 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">530 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">293 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">20<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=54166&source=rt1-main&fun=a&rank=20"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">54547 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">梁庚辰              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">二3,4 四3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">230 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">85 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">509 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">27<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=54547&source=rt1-main&fun=a&rank=27"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">24619 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">陳品豪              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">04 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">200 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">108 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1180 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">28<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=24619&source=rt1-main&fun=a&rank=28"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">66184 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">周珮雯              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">08 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">150 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">526 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">29<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=66184&source=rt1-main&fun=a&rank=29"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">50073 　</td>
+
+        <td align=left><font color="blue">普通心理學                                        　</td>
+        <td align=left><font color="blue">周珮雯              　</td>
+
+        <td align=left><font color="blue">Psy1007<br>207 10100 　</td>
+        <td align=center><font color="blue">10 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">150 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">394 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">31<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=50073&source=rt1-main&fun=a&rank=31"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">37763 　</td>
+
+        <td align=left><font color="blue">東亞近代文學選讀                                  　</td>
+        <td align=left><font color="blue">張文薰              　</td>
+
+        <td align=left><font color="blue">TwLit5013<br>145 U0190 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">50 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">354 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">33<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=37763&source=rt1-main&fun=a&rank=33"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">39066 　</td>
+
+        <td align=left><font color="blue">東亞現代史                                        　</td>
+        <td align=left><font color="blue">羅士傑              　</td>
+
+        <td align=left><font color="blue">Hist1600<br>103 52470 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">三6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">200 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">616 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">34<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=39066&source=rt1-main&fun=a&rank=34"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">45345 　</td>
+
+        <td align=left><font color="blue">邏輯                                              　</td>
+        <td align=left><font color="blue">傅皓政              　</td>
+
+        <td align=left><font color="blue">LibEdu1021<br>H01 02100 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">一6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">270 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1925 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">35<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=45345&source=rt1-main&fun=a&rank=35"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">15061 　</td>
+
+        <td align=left><font color="blue">社會學                                            　</td>
+        <td align=left><font color="blue">吳嘉苓              　</td>
+
+        <td align=left><font color="blue">Soc1027<br>305 10110 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">100 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">61 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">502 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">36<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=15061&source=rt1-main&fun=a&rank=36"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">56477 　</td>
+
+        <td align=left><font color="blue">社會學導論                                        　</td>
+        <td align=left><font color="blue">林鶴玲              　</td>
+
+        <td align=left><font color="blue">Soc1013<br>305 10240 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">74 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">326 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">37<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=56477&source=rt1-main&fun=a&rank=37"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">39631 　</td>
+
+        <td align=left><font color="blue">社會學                                            　</td>
+        <td align=left><font color="blue">劉華真              　</td>
+
+        <td align=left><font color="blue">Soc1027<br>305 10110 　</td>
+        <td align=center><font color="blue">03 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">二2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">50 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">272 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">38<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=39631&source=rt1-main&fun=a&rank=38"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">22962 　</td>
+
+        <td align=left><font color="blue">社會學                                            　</td>
+        <td align=left><font color="blue">簡妤儒              　</td>
+
+        <td align=left><font color="blue">Soc1027<br>305 10110 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">三6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">120 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">124 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">658 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">39<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=22962&source=rt1-main&fun=a&rank=39"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">11363 　</td>
+
+        <td align=left><font color="blue">毒道之處～看不見的危機!                           　</td>
+        <td align=left><font color="blue">姜至剛              　</td>
+
+        <td align=left><font color="blue">Tox5009<br>447 U2500 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">一8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">170 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">2432 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">41<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=11363&source=rt1-main&fun=a&rank=41"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">69175 　</td>
+
+        <td align=left><font color="blue">臺灣現代詩                                        　</td>
+        <td align=left><font color="blue">劉正忠              　</td>
+
+        <td align=left><font color="blue">CHIN1095<br>101 16890 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">一8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">194 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1093 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">42<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=69175&source=rt1-main&fun=a&rank=42"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">78108 　</td>
+
+        <td align=left><font color="blue">文學、動物與社會                                  　</td>
+        <td align=left><font color="blue">黃宗慧              　</td>
+
+        <td align=left><font color="blue">FL4047<br>102 45700 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">56 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">647 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">43<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=78108&source=rt1-main&fun=a&rank=43"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">74987 　</td>
+
+        <td align=left><font color="blue">人文科技的交響：新趨勢與新素養（一）              　</td>
+        <td align=left><font color="blue">鄭毓瑜              　</td>
+
+        <td align=left><font color="blue">CHIN1096<br>101 11230 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">94 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">937 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">44<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=74987&source=rt1-main&fun=a&rank=44"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">72583 　</td>
+
+        <td align=left><font color="blue">現代生物學之應用                                  　</td>
+        <td align=left><font color="blue">朱家瑩              　</td>
+
+        <td align=left><font color="blue">LS1034<br>B01 17030 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">2 　</td>
+        <td align=left><font color="blue">一8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">180 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">426 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">45<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=72583&source=rt1-main&fun=a&rank=45"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">74237 　</td>
+
+        <td align=left><font color="blue">活出快樂:科學實證與演練                           　</td>
+        <td align=left><font color="blue">戴可馨              　</td>
+
+        <td align=left><font color="blue">LibEdu1102<br>H01 10400 　</td>
+        <td align=center><font color="blue">03 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">四3,4,5 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">200 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">933 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">46<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=74237&source=rt1-main&fun=a&rank=46"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97127 　</td>
+
+        <td align=left><font color="blue">桌球初級                                          　</td>
+        <td align=left><font color="blue">林信甫              　</td>
+
+        <td align=left><font color="blue">PE2074<br>002 50900 　</td>
+        <td align=center><font color="blue">38 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">772 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">47<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97127&source=rt1-main&fun=a&rank=47"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97128 　</td>
+
+        <td align=left><font color="blue">桌球初級                                          　</td>
+        <td align=left><font color="blue">林信甫              　</td>
+
+        <td align=left><font color="blue">PE2074<br>002 50900 　</td>
+        <td align=center><font color="blue">39 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">612 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">49<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97128&source=rt1-main&fun=a&rank=49"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97129 　</td>
+
+        <td align=left><font color="blue">桌球初級                                          　</td>
+        <td align=left><font color="blue">呂宛蓁              　</td>
+
+        <td align=left><font color="blue">PE2074<br>002 50900 　</td>
+        <td align=center><font color="blue">86 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">903 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">50<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97129&source=rt1-main&fun=a&rank=50"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97118 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">洪巧菱              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">91 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1026 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">51<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97118&source=rt1-main&fun=a&rank=51"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97109 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">黃欽永              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">12 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">961 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">52<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97109&source=rt1-main&fun=a&rank=52"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97110 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">黃欽永              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">13 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">1000 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">53<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97110&source=rt1-main&fun=a&rank=53"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97108 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">黃欽永              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">09 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">36 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">773 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">54<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97108&source=rt1-main&fun=a&rank=54"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97115 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">連家瑩              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">80 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">870 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">55<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97115&source=rt1-main&fun=a&rank=55"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97223 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">連家瑩              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">84 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">四3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">764 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">56<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97223&source=rt1-main&fun=a&rank=56"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97117 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">連家瑩              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">82 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">716 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">57<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97117&source=rt1-main&fun=a&rank=57"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97105 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">陳美莉              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">05 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">781 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">58<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97105&source=rt1-main&fun=a&rank=58"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97104 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">陳美莉              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">04 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">618 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">59<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97104&source=rt1-main&fun=a&rank=59"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97114 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">呂碧琴              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">57 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">706 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">60<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97114&source=rt1-main&fun=a&rank=60"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97113 　</td>
+
+        <td align=left><font color="blue">羽球初級                                          　</td>
+        <td align=left><font color="blue">呂碧琴              　</td>
+
+        <td align=left><font color="blue">PE2064<br>002 50780 　</td>
+        <td align=center><font color="blue">56 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">36 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">542 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">61<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97113&source=rt1-main&fun=a&rank=61"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97172 　</td>
+
+        <td align=left><font color="blue">壁球初級                                          　</td>
+        <td align=left><font color="blue">林聯喜              　</td>
+
+        <td align=left><font color="blue">PE5001<br>002 51790 　</td>
+        <td align=center><font color="blue">63 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">32 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">526 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">62<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97172&source=rt1-main&fun=a&rank=62"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97171 　</td>
+
+        <td align=left><font color="blue">壁球初級                                          　</td>
+        <td align=left><font color="blue">林聯喜              　</td>
+
+        <td align=left><font color="blue">PE5001<br>002 51790 　</td>
+        <td align=center><font color="blue">62 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">32 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">523 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">63<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97171&source=rt1-main&fun=a&rank=63"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97126 　</td>
+
+        <td align=left><font color="blue">桌球初級                                          　</td>
+        <td align=left><font color="blue">林信甫              　</td>
+
+        <td align=left><font color="blue">PE2074<br>002 50900 　</td>
+        <td align=center><font color="blue">37 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">606 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">64<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97126&source=rt1-main&fun=a&rank=64"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97149 　</td>
+
+        <td align=left><font color="blue">網球初級                                          　</td>
+        <td align=left><font color="blue">趙曉涵              　</td>
+
+        <td align=left><font color="blue">PE2102<br>002 51260 　</td>
+        <td align=center><font color="blue">A2 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">498 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">66<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97149&source=rt1-main&fun=a&rank=66"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97150 　</td>
+
+        <td align=left><font color="blue">網球初級                                          　</td>
+        <td align=left><font color="blue">趙曉涵              　</td>
+
+        <td align=left><font color="blue">PE2102<br>002 51260 　</td>
+        <td align=center><font color="blue">A3 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">533 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">67<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97150&source=rt1-main&fun=a&rank=67"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97219 　</td>
+
+        <td align=left><font color="blue">網球初級                                          　</td>
+        <td align=left><font color="blue">趙曉涵              　</td>
+
+        <td align=left><font color="blue">PE2102<br>002 51260 　</td>
+        <td align=center><font color="blue">A4 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">436 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">68<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97219&source=rt1-main&fun=a&rank=68"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97220 　</td>
+
+        <td align=left><font color="blue">軟網初級                                          　</td>
+        <td align=left><font color="blue">莊泰源              　</td>
+
+        <td align=left><font color="blue">PE2129<br>002 51600 　</td>
+        <td align=center><font color="blue">31 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">44 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">259 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">69<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97220&source=rt1-main&fun=a&rank=69"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97147 　</td>
+
+        <td align=left><font color="blue">網球初級                                          　</td>
+        <td align=left><font color="blue">陳美莉              　</td>
+
+        <td align=left><font color="blue">PE2102<br>002 51260 　</td>
+        <td align=center><font color="blue">08 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">四1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">355 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">72<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97147&source=rt1-main&fun=a&rank=72"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97178 　</td>
+
+        <td align=left><font color="blue">定向越野                                          　</td>
+        <td align=left><font color="blue">莊珮琪              　</td>
+
+        <td align=left><font color="blue">PE5014<br>002 51900 　</td>
+        <td align=center><font color="blue">H2 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">五3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">462 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">73<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97178&source=rt1-main&fun=a&rank=73"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97177 　</td>
+
+        <td align=left><font color="blue">定向越野                                          　</td>
+        <td align=left><font color="blue">莊珮琪              　</td>
+
+        <td align=left><font color="blue">PE5014<br>002 51900 　</td>
+        <td align=center><font color="blue">H1 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">五1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">40 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">437 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">74<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97177&source=rt1-main&fun=a&rank=74"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97163 　</td>
+
+        <td align=left><font color="blue">軟網初級                                          　</td>
+        <td align=left><font color="blue">莊泰源              　</td>
+
+        <td align=left><font color="blue">PE2129<br>002 51600 　</td>
+        <td align=center><font color="blue">30 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">315 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">75<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97163&source=rt1-main&fun=a&rank=75"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97162 　</td>
+
+        <td align=left><font color="blue">軟網初級                                          　</td>
+        <td align=left><font color="blue">莊泰源              　</td>
+
+        <td align=left><font color="blue">PE2129<br>002 51600 　</td>
+        <td align=center><font color="blue">28 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">333 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">76<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97162&source=rt1-main&fun=a&rank=76"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97134 　</td>
+
+        <td align=left><font color="blue">排球初級                                          　</td>
+        <td align=left><font color="blue">呂宛蓁              　</td>
+
+        <td align=left><font color="blue">PE2080<br>002 50960 　</td>
+        <td align=center><font color="blue">85 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">476 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">77<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97134&source=rt1-main&fun=a&rank=77"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97135 　</td>
+
+        <td align=left><font color="blue">排球初級                                          　</td>
+        <td align=left><font color="blue">鐘敏華              　</td>
+
+        <td align=left><font color="blue">PE2080<br>002 50960 　</td>
+        <td align=center><font color="blue">P3 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">465 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">78<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97135&source=rt1-main&fun=a&rank=78"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97136 　</td>
+
+        <td align=left><font color="blue">排球初級                                          　</td>
+        <td align=left><font color="blue">鐘敏華              　</td>
+
+        <td align=left><font color="blue">PE2080<br>002 50960 　</td>
+        <td align=center><font color="blue">P4 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">三8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">42 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">494 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">79<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97136&source=rt1-main&fun=a&rank=79"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97138 　</td>
+
+        <td align=left><font color="blue">籃球初級                                          　</td>
+        <td align=left><font color="blue">曾郁嫻              　</td>
+
+        <td align=left><font color="blue">PE2084<br>002 51010 　</td>
+        <td align=center><font color="blue">71 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">44 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">234 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">80<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97138&source=rt1-main&fun=a&rank=80"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97137 　</td>
+
+        <td align=left><font color="blue">籃球初級                                          　</td>
+        <td align=left><font color="blue">曾郁嫻              　</td>
+
+        <td align=left><font color="blue">PE2084<br>002 51010 　</td>
+        <td align=center><font color="blue">68 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">44 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">186 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">81<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97137&source=rt1-main&fun=a&rank=81"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97145 　</td>
+
+        <td align=left><font color="blue">棒球初級                                          　</td>
+        <td align=left><font color="blue">康正男              　</td>
+
+        <td align=left><font color="blue">PE2097<br>002 51180 　</td>
+        <td align=center><font color="blue">03 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">一6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">162 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">82<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97145&source=rt1-main&fun=a&rank=82"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97144 　</td>
+
+        <td align=left><font color="blue">高爾夫初級                                        　</td>
+        <td align=left><font color="blue">簡坤鐘              　</td>
+
+        <td align=left><font color="blue">PE2088<br>002 51060 　</td>
+        <td align=center><font color="blue">43 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">481 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">83<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97144&source=rt1-main&fun=a&rank=83"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">97143 　</td>
+
+        <td align=left><font color="blue">高爾夫初級                                        　</td>
+        <td align=left><font color="blue">簡坤鐘              　</td>
+
+        <td align=left><font color="blue">PE2088<br>002 51060 　</td>
+        <td align=center><font color="blue">42 　</td>
+        <td align=center><font color="blue">1 　</td>
+        <td align=left><font color="blue">二1,2 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">48 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">399 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">84<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=97143&source=rt1-main&fun=a&rank=84"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">93003 　</td>
+
+        <td align=left><font color="blue">全民國防教育軍事訓練課程－國防政策                　</td>
+        <td align=left><font color="blue">廖天威              　</td>
+
+        <td align=left><font color="blue">MilTr1007<br>003 10200 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">0 　</td>
+        <td align=left><font color="blue">三6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">296 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">583 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">86<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=93003&source=rt1-main&fun=a&rank=86"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">93008 　</td>
+
+        <td align=left><font color="blue">全民國防教育軍事訓練課程－國防科技                　</td>
+        <td align=left><font color="blue">劉鐵軍              　</td>
+
+        <td align=left><font color="blue">MilTr1010<br>003 10230 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">0 　</td>
+        <td align=left><font color="blue">二3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">137 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">596 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">87<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=93008&source=rt1-main&fun=a&rank=87"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">93004 　</td>
+
+        <td align=left><font color="blue">全民國防教育軍事訓練課程－防衛動員                　</td>
+        <td align=left><font color="blue">余宗基              　</td>
+
+        <td align=left><font color="blue">MilTr1008<br>003 10210 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">0 　</td>
+        <td align=left><font color="blue">三6,7 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">146 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">644 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">88<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=93004&source=rt1-main&fun=a&rank=88"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">93005 　</td>
+
+        <td align=left><font color="blue">全民國防教育軍事訓練課程－防衛動員                　</td>
+        <td align=left><font color="blue">余宗基              　</td>
+
+        <td align=left><font color="blue">MilTr1008<br>003 10210 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">0 　</td>
+        <td align=left><font color="blue">三8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">146 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">652 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">89<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=93005&source=rt1-main&fun=a&rank=89"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">17585 　</td>
+
+        <td align=left><font color="blue">總體經濟學上                                      　</td>
+        <td align=left><font color="blue">毛慶生              　</td>
+
+        <td align=left><font color="blue">ECON2020<br>303 20021 　</td>
+        <td align=center><font color="blue">01 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五7,8,9 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">100 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">358 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">90<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=17585&source=rt1-main&fun=a&rank=90"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">33493 　</td>
+
+        <td align=left><font color="blue">總體經濟學上                                      　</td>
+        <td align=left><font color="blue">王泓仁              　</td>
+
+        <td align=left><font color="blue">ECON2020<br>303 20021 　</td>
+        <td align=center><font color="blue">02 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">二2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">118 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">281 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">91<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=33493&source=rt1-main&fun=a&rank=91"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">70264 　</td>
+
+        <td align=left><font color="blue">總體經濟學上                                      　</td>
+        <td align=left><font color="blue">蔡宜展              　</td>
+
+        <td align=left><font color="blue">ECON2020<br>303 20021 　</td>
+        <td align=center><font color="blue">04 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">五2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">83 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">154 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">92<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=70264&source=rt1-main&fun=a&rank=92"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">46674 　</td>
+
+        <td align=left><font color="blue">總體經濟學上                                      　</td>
+        <td align=left><font color="blue">謝德宗              　</td>
+
+        <td align=left><font color="blue">ECON2020<br>303 20021 　</td>
+        <td align=center><font color="blue">03 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">二2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">80 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">195 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">93<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=46674&source=rt1-main&fun=a&rank=93"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">46952 　</td>
+
+        <td align=left><font color="blue">總體經濟學上                                      　</td>
+        <td align=left><font color="blue">梁卓誠              　</td>
+
+        <td align=left><font color="blue">ECON2020<br>303 20021 　</td>
+        <td align=center><font color="blue">05 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">二2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">87 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">88 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">94<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=46952&source=rt1-main&fun=a&rank=94"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">16186 　</td>
+
+        <td align=left><font color="blue">資訊理論與編碼技巧                                　</td>
+        <td align=left><font color="blue">吳家麟              　</td>
+
+        <td align=left><font color="blue">CSIE7624<br>922 U1030 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">70 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">173 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">95<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=16186&source=rt1-main&fun=a&rank=95"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">15478 　</td>
+
+        <td align=left><font color="blue">因果推論                                          　</td>
+        <td align=left><font color="blue">黃彥棕              　</td>
+
+        <td align=left><font color="blue">MATH5237<br>221 U8730 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">76 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">92 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">97<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=15478&source=rt1-main&fun=a&rank=97"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-b">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">16511 　</td>
+
+        <td align=left><font color="blue">財務賽局理論                                      　</td>
+        <td align=left><font color="blue">陳業寧              　</td>
+
+        <td align=left><font color="blue">Fin5035<br>723 U9300 　</td>
+        <td align=center><font color="blue">   　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">一2,3,4 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">80 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">254 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">98<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=16511&source=rt1-main&fun=a&rank=98"> 修改</a>
+                        </td>
+        </tr>
+        <tr class="row-a">
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">  　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">63030 　</td>
+
+        <td align=left><font color="blue">個體經濟學上                                      　</td>
+        <td align=left><font color="blue">陳俊廷              　</td>
+
+        <td align=left><font color="blue">ECON2018<br>303 20011 　</td>
+        <td align=center><font color="blue">05 　</td>
+        <td align=center><font color="blue">3 　</td>
+        <td align=left><font color="blue">三6,7,8 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">80 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">0 　</td>
+        <td class='d-none d-sm-table-cell' scope='col'  align=center><font color="blue">152 　</td>
+        <td class='d-none d-sm-table-cell' scope='col' >
+                    </td>
+        <td align=center>
+                <font color="blue">99<a href="https://if192.aca.ntu.edu.tw/rtcourse/index.php/coutake/rt1-wish-adjust-new?serno=63030&source=rt1-main&fun=a&rank=99"> 修改</a>
+                        </td>
+        </tr>
+        </table>
+
+<br><font color=red>『必帶』欄內加『＊』之課程係依各系所規定，業已直接帶入本選課系統中，若無特殊情況請勿退選！</font><br><br>            </center>
+        </div>
+    <!--End content-wrap-->
+    </div>
+<!-- END Wrap -->
+</div>    </div> <!-- id="div-main" -->
+    <footer class=" navbar-fixed-bottom" style="text-align: center; font-size: small;">
+        <div class="container">
+        </div>
+    </footer>
+
+<script src='https://if192.aca.ntu.edu.tw/rtcourse/assets/popper-2.9.1.min.js' type="text/javascript"></script>
+<script src='https://if192.aca.ntu.edu.tw/rtcourse/assets/bootstrap-4.3.1.min.js' type="text/javascript"></script>
+
+<script src='https://if192.aca.ntu.edu.tw/rtcourse/assets/sweetalert2-10.min.js'></script>
+<!-- IE 相容性檢視需要 promise -->
+<script src='https://if192.aca.ntu.edu.tw/rtcourse/assets/promise-polyfill-8.js'></script>
+
+<script>
+    // 10 秒後，關閉訊息視窗
+    setTimeout("$('div.flash_msg').hide()", 10*1000);
+
+    c_app.alert = function (msg) {
+        console.log('c_app.alert');
+
+        Swal.fire(
+            '', msg
+        )
+    }
+
+    c_app.confirm_html = function (msg, act) {
+        Swal.fire({
+            // title: '',
+            html: msg,
+            // icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: '確定',
+            cancelButtonText: '取消'
+        }).then(function (result)
+        {
+            // console.log(result);
+            if (result.isConfirmed) {
+                act();
+            }
+        });
+    }
+</script>
+</body>
+</html>
